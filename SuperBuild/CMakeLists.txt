@@ -1,6 +1,6 @@
 include(ExternalProject)
 
-file(GLOB external_project_cmake_files "SuperBuild/External_*.cmake")
+file(GLOB external_project_cmake_files "External_*.cmake")
 
 set(EP_GIT_PROTOCOL "https")
 

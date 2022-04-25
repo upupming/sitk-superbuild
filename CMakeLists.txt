@@ -1,14 +1,26 @@
 cmake_minimum_required(VERSION 3.21.1)
 
-IF(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-  SET(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE}/install CACHE PATH "Install prefix" FORCE)
-ENDIF(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+project(sitk-superbuild)
 
-set(top_level_proj sitk-superbuild)
-project(${top_level_proj})
+add_subdirectory(SuperBuild)
 
-include("${CMAKE_CURRENT_SOURCE_DIR}/SuperBuild.cmake")
-
-add_executable(${top_level_proj} main.cpp)
-find_package(SimpleITK CONFIG REQUIRED)
-target_link_libraries(${top_level_proj} ${SimpleITK_LIBRARIES})
+ExternalProject_Add(${PROJECT_NAME}_core
+  BINARY_DIR ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE}/bin
+  DEPENDS
+    SimpleITK
+  SOURCE_DIR
+    ${CMAKE_CURRENT_LIST_DIR}/src
+  CMAKE_ARGS
+    -DSimpleITK_DIR=${SimpleITK_DIR}
+    -DITK_DIR=${ITK_DIR}
+    -DCMAKE_C_STANDARD=${CMAKE_C_STANDARD}
+    -DCMAKE_C_EXTENSIONS=${CMAKE_C_EXTENSIONS}
+    -DCMAKE_C_STANDARD_REQUIRED=${CMAKE_C_STANDARD_REQUIRED}
+  CMAKE_CACHE_ARGS
+    -DCMAKE_C_FLAGS:STRING=${CMAKE_C_FLAGS}
+    -DCMAKE_PREFIX_PATH:PATH=${CMAKE_PREFIX_PATH}
+  BUILD_ALWAYS
+    1
+  INSTALL_COMMAND
+    ""
+  )
