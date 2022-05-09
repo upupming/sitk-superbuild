@@ -1,6 +1,6 @@
 set(proj SimpleITK)
 
-find_package(proj QUIET)
+find_package(${proj} QUIET)
 
 if(${proj}_FOUND)
   message(STATUS "Found ${proj} at ${proj}_DIR")
