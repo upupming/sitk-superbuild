@@ -1,6 +1,7 @@
 #include <SimpleITK.h>
 #include <sitkImageOperators.h>
 
+#include "lib.h"
 namespace sitk = itk::simple;
 
 int argc;
@@ -60,6 +61,7 @@ int test_sitk_read_dcm() {
 }
 
 int main(int argc_main, char* argv_main[]) {
+    test();
     argc = argc_main;
     argv = argv_main;
     if (argc >= 2) {

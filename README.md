@@ -6,8 +6,12 @@ On Windows, the path of the source directory should be short enough (eg. `C:/src
 
 ```bash
 ITK source code directory path length is too long (59 > 50).Please move the
-[build]       ITK source code directory to a directory with a shorter path.
+       ITK source code directory to a directory with a shorter path.
 ```
+
+## Pitfalls
+
+- VSCode cannot handle IntelliSense correctly if using EP, see: https://gitlab.kitware.com/cmake/cmake/-/issues/22826 and https://github.com/microsoft/vscode-cpptools/discussions/8248, I suggest add the include paths manually to your `.vscode/c_cpp_properties.json` file.
 
 ## References
 
