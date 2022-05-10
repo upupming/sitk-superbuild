@@ -11,7 +11,7 @@ ITK source code directory path length is too long (59 > 50).Please move the
 
 ## Pitfalls
 
-- VSCode cannot handle IntelliSense correctly if using EP, see: https://gitlab.kitware.com/cmake/cmake/-/issues/22826 and https://github.com/microsoft/vscode-cpptools/discussions/8248, I suggest add the include paths manually to your `.vscode/c_cpp_properties.json` file.
+- VSCode cannot handle IntelliSense correctly if using EP, see: https://gitlab.kitware.com/cmake/cmake/-/issues/22826 and https://github.com/microsoft/vscode-cpptools/discussions/8248, I suggest add the include paths manually to your `.vscode/c_cpp_properties.json` file, or use `compile_commands.json` directly, see https://www.cnblogs.com/cong-wang/p/15026530.html for more detail.
 
 ## References
 
